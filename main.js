@@ -26,9 +26,9 @@ updateNodeProperties = function(jsonObject) {
       
 
       if(node.WaterAmount < node.ActivationAmount) {
-        node.addClass("inactiveNode")
+        cyNode.addClass("inactiveNode")
       } else {
-        node.removeClass("inactiveNode")
+        cyNode.removeClass("inactiveNode")
       }
     
     }
