@@ -5,11 +5,13 @@ updateSize = function(jsonObject) {
   var nodes = jsonObject.Goals.concat(jsonObject.Policies)
   var index = 0
   
+  console.log(nodes)
+  
   nodes.forEach(function(node) {    
     var cyNode = cy.getElementById(node.Id)
 
     // calculates leak
-    var amountAfterLeak = node.WaterAmount - ((node.WaterLeakagePercentage / 100.0) * node.WaterAmount)
+    var amountAfterLeak = node.WaterAmount - ((node.Leakage / 100.0) * node.WaterAmount)
     
     // removes activation amount
     var availableAmount = amountAfterLeak - node.ActivationAmount    
@@ -23,10 +25,14 @@ updateSize = function(jsonObject) {
 
 // translates json data from playfab into cytoscape model
 graphElements = function(jsonObject) {
+  
+  console.log(jsonObject)
 
   var elements = {nodes: [], edges: []}  
   var nodes = jsonObject.Goals.concat(jsonObject.Policies)
   var index = 0
+  
+  console.log(nodes)
   
   nodes.forEach(function(node) {    
     elements.nodes.push({
@@ -41,14 +47,16 @@ graphElements = function(jsonObject) {
     node.Connections.forEach(function(connection) {    
       elements.edges.push({
         data: {
-          source: node.Id,
-          target: connection.TargetId,
+          target: node.Id,
+          source: connection.FromId,
           color: "#000"
         }
       })
     })
     index++
   })
+  
+  console.log(elements)
   
   return elements
 }
@@ -105,24 +113,16 @@ updatePolicyGraph = function(jsonObject) {
 }
 
 $('document').ready(function(){
-
-  $.ajaxSetup({beforeSend: function(xhr) {
-    if(xhr.overrideMimeType) {
-      xhr.overrideMimeType("application/json");
-    }
-  }})
-
-  var testData = null
-
-  $.getJSON("testData.json", function(jsonObject) {
-    testData = jsonObject
-    updatePolicyGraph(jsonObject)    
-  })
   
+  GetGardenData.execute(function(jsonObject) {
+    updatePolicyGraph(jsonObject)        
+  })
+
   $('#refresh').click(function() {
-    updateSize(testData)
+    GetGardenData.execute(function(jsonObject) {
+      updateSize(jsonObject)      
+    })
   })
-  
   
 })
 
