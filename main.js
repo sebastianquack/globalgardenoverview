@@ -5,6 +5,9 @@ updateNodeProperties = function(jsonObject) {
   var nodes = jsonObject.Goals.concat(jsonObject.Policies)
   var index = 0
   
+  cy.nodes().removeClass("inactiveNode")
+  cy.edges().removeClass("inactiveEdge")
+  
   nodes.forEach(function(node) {    
     var cyNode = cy.getElementById(node.Id)
     
@@ -23,14 +26,16 @@ updateNodeProperties = function(jsonObject) {
 
       var size = minSize + availableAmount * sizeFactor        
       cyNode.data("size", size)
-      
-
-      if(node.WaterAmount < node.ActivationAmount) {
-        cyNode.addClass("inactiveNode")
-      } else {
-        cyNode.removeClass("inactiveNode")
-      }
     
+    }
+
+    if(node.WaterAmount < node.ActivationAmount) {
+      cyNode.addClass("inactiveNode")
+      var edges = cyNode.neighborhood().edges()
+      edges.forEach(function(edge) {
+        edge.addClass("inactiveEdge")
+      })
+
     }
 
   })
@@ -100,7 +105,7 @@ updatePolicyGraph = function(jsonObject) {
       .selector('node')
         .css({
           'shape': 'circle',
-          'background-color': '#fff',
+          'background-color': 'data(color)',
           'border-color': 'data(color)',
           'border-style': 'solid',
           'border-width': '1.0',
@@ -124,9 +129,9 @@ updatePolicyGraph = function(jsonObject) {
             'target-arrow-color': '#000'
         })
       .selector('.inactiveEdge')
-        .css({'line-color': "#aaa", "source-arrow-color": "#aaa", "target-arrow-color": "#aaa"})          
+        .css({'line-color': "#ddd", "source-arrow-color": "#ddd", "target-arrow-color": "#ddd"})          
       .selector('.inactiveNode')
-        .css({'border-color': "#aaa", "color": "#aaa"})          
+        .css({'border-color': "#ddd", "color": "#ddd", 'background-color': "#ddd"})          
         
         
   })  
