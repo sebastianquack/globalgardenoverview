@@ -1,0 +1,12 @@
+#cy {
+	position: absolute;
+	width: 100%;
+	top: 0px;
+	bottom: 0px;
+	z-index: 1;
+}
+
+input {
+	position: absolute;
+	z-index: 2;
+}

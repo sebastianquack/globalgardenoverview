@@ -1,0 +1,282 @@
+{
+  "Goals": [
+    {
+      "ActivationAmount": 0,
+      "Connections": [
+        {
+          "TargetId": "1",
+          "Weight": 0.10000000149011612
+        }
+      ],
+      "Id": "0",
+      "Name": "Reduce Peak Congestion",
+      "WaterAmount": 0,
+      "WaterLeakagePercentage": 1
+    },
+    {
+      "ActivationAmount": 0,
+      "Connections": [
+      ],
+      "Id": "1",
+      "Name": "Road Safety",
+      "WaterAmount": 0,
+      "WaterLeakagePercentage": 1
+    },
+    {
+      "ActivationAmount": 0,
+      "Connections": [
+        {
+          "TargetId": "3",
+          "Weight": 0.10000000149011612
+        }
+      ],
+      "Id": "2",
+      "Name": "Economic Growth",
+      "WaterAmount": 0,
+      "WaterLeakagePercentage": 1
+    },
+    {
+      "ActivationAmount": 0,
+      "Connections": [
+        {
+          "TargetId": "4",
+          "Weight": 0.10000000149011612
+        }
+      ],
+      "Id": "3",
+      "Name": "Reduce CO2",
+      "WaterAmount": 0,
+      "WaterLeakagePercentage": 1
+    },
+    {
+      "ActivationAmount": 0,
+      "Connections": [
+      ],
+      "Id": "4",
+      "Name": "Air Quality",
+      "WaterAmount": 0,
+      "WaterLeakagePercentage": 1
+    },
+    {
+      "ActivationAmount": 0,
+      "Connections": [
+      ],
+      "Id": "5",
+      "Name": "Personal Freedom",
+      "WaterAmount": 0,
+      "WaterLeakagePercentage": 1
+    },
+    {
+      "ActivationAmount": 0,
+      "Connections": [
+      ],
+      "Id": "6",
+      "Name": "Health & Fitness",
+      "WaterAmount": 0,
+      "WaterLeakagePercentage": 1
+    }
+  ],
+  "Policies": [
+    {
+      "ActivationAmount": 0,
+      "AttachedPlayers": [
+        {
+          "Amount": 28.57142857142857,
+          "PlayerId": "278E7C968AF801C0",
+          "Weight": 2
+        },
+        {
+          "Amount": 25,
+          "PlayerId": "FDEE06251EE949C2",
+          "Weight": 2
+        }
+      ],
+      "Connections": [
+        {
+          "TargetId": "0",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "1",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "3",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "4",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "5",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "6",
+          "Weight": 0.10000000149011612
+        }
+      ],
+      "Id": "7",
+      "Name": "Increase Cycle Provision",
+      "WaterAmount": 87,
+      "WaterLeakagePercentage": 0
+    },
+    {
+      "ActivationAmount": 0,
+      "AttachedPlayers": [
+        {
+          "Amount": 14.285714285714285,
+          "PlayerId": "278E7C968AF801C0",
+          "Weight": 1
+        }
+      ],
+      "Connections": [
+        {
+          "TargetId": "9",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "11",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "0",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "1",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "2",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "5",
+          "Weight": 0.10000000149011612
+        }
+      ],
+      "Id": "8",
+      "Name": "Improve Roads",
+      "WaterAmount": 87,
+      "WaterLeakagePercentage": 0
+    },
+    {
+      "ActivationAmount": 0,
+      "AttachedPlayers": [
+        {
+          "Amount": 57.14285714285714,
+          "PlayerId": "278E7C968AF801C0",
+          "Weight": 4
+        },
+        {
+          "Amount": 37.5,
+          "PlayerId": "FDEE06251EE949C2",
+          "Weight": 3
+        }
+      ],
+      "Connections": [
+        {
+          "TargetId": "11",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "0",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "1",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "2",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "3",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "4",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "5",
+          "Weight": 0.10000000149011612
+        }
+      ],
+      "Id": "9",
+      "Name": "Improve Buses",
+      "WaterAmount": 87,
+      "WaterLeakagePercentage": 0
+    },
+    {
+      "ActivationAmount": 0,
+      "AttachedPlayers": [
+        {
+          "Amount": 37.5,
+          "PlayerId": "FDEE06251EE949C2",
+          "Weight": 3
+        }
+      ],
+      "Connections": [
+        {
+          "TargetId": "11",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "0",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "1",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "2",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "3",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "4",
+          "Weight": 0.10000000149011612
+        }
+      ],
+      "Id": "10",
+      "Name": "Raise Fuel Tax",
+      "WaterAmount": 87,
+      "WaterLeakagePercentage": 0
+    },
+    {
+      "ActivationAmount": 0,
+      "AttachedPlayers": [
+      ],
+      "Connections": [
+        {
+          "TargetId": "0",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "1",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "3",
+          "Weight": 0.10000000149011612
+        },
+        {
+          "TargetId": "4",
+          "Weight": 0.10000000149011612
+        }
+      ],
+      "Id": "11",
+      "Name": "Car Share",
+      "WaterAmount": 87,
+      "WaterLeakagePercentage": 0
+    }
+  ]
+}
