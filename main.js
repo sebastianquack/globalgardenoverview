@@ -1,23 +1,37 @@
 minSize = 20
 sizeFactor = 0.5
 
-updateSize = function(jsonObject) {
+updateNodeProperties = function(jsonObject) {
   var nodes = jsonObject.Goals.concat(jsonObject.Policies)
   var index = 0
   
-  console.log(nodes)
-  
   nodes.forEach(function(node) {    
     var cyNode = cy.getElementById(node.Id)
-
-    // calculates leak
-    var amountAfterLeak = node.WaterAmount - ((node.Leakage / 100.0) * node.WaterAmount)
     
-    // removes activation amount
-    var availableAmount = amountAfterLeak - node.ActivationAmount    
+    if(node.type == "goal") {
 
-    var size = minSize + availableAmount * sizeFactor        
-    cyNode.data("size", size)
+      var size = node.WaterAmount * sizeFactor
+      cyNode.data("size", size)
+      
+    } else {
+
+      // calculates leak
+      var amountAfterLeak = node.WaterAmount - ((node.Leakage / 100.0) * node.WaterAmount)
+    
+      // removes activation amount
+      var availableAmount = amountAfterLeak - node.ActivationAmount    
+
+      var size = minSize + availableAmount * sizeFactor        
+      cyNode.data("size", size)
+      
+
+      if(node.WaterAmount < node.ActivationAmount) {
+        node.addClass("inactiveNode")
+      } else {
+        node.removeClass("inactiveNode")
+      }
+    
+    }
 
   })
   
@@ -38,7 +52,7 @@ graphElements = function(jsonObject) {
     elements.nodes.push({
       data: {
         id: node.Id, 
-        title: node.Name,
+        title: (index < jsonObject.Goals.length ? "G: " : "P: ") + node.Name,
         type: index < jsonObject.Goals.length ? "goal" : "policy",
         color: index < jsonObject.Goals.length ? "blue" : "green",
         size: 25
@@ -80,6 +94,7 @@ updatePolicyGraph = function(jsonObject) {
     },
     ready: function(){
       window.cy = this;
+      updateNodeProperties(jsonObject)
     },
     style: cytoscape.stylesheet()
       .selector('node')
@@ -108,13 +123,20 @@ updatePolicyGraph = function(jsonObject) {
             'source-arrow-color': '#000',
             'target-arrow-color': '#000'
         })
+      .selector('.inactiveEdge')
+        .css({'line-color': "#aaa", "source-arrow-color": "#aaa", "target-arrow-color": "#aaa"})          
+      .selector('.inactiveNode')
+        .css({'border-color': "#aaa", "color": "#aaa"})          
+        
+        
   })  
 
 }
 
-refreshSizes = function() {
+refreshGraph = function() {
   GetGardenData.execute(function(jsonObject) {
-    updateSize(jsonObject)      
+    console.log(jsonObject)
+    updateNodeProperties(jsonObject)      
   })  
 }
 
@@ -124,8 +146,7 @@ $('document').ready(function(){
     updatePolicyGraph(jsonObject)        
   })
 
-  $('#refresh').click(refreshSizes)
-  setInterval(refreshSizes, 5000)
+  setInterval(refreshGraph, 5000)
   
 })
 
