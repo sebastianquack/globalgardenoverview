@@ -112,17 +112,20 @@ updatePolicyGraph = function(jsonObject) {
 
 }
 
+refreshSizes = function() {
+  GetGardenData.execute(function(jsonObject) {
+    updateSize(jsonObject)      
+  })  
+}
+
 $('document').ready(function(){
   
   GetGardenData.execute(function(jsonObject) {
     updatePolicyGraph(jsonObject)        
   })
 
-  $('#refresh').click(function() {
-    GetGardenData.execute(function(jsonObject) {
-      updateSize(jsonObject)      
-    })
-  })
+  $('#refresh').click(refreshSizes)
+  setInterval(refreshSizes, 5000)
   
 })
 
